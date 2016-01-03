@@ -42,7 +42,7 @@ public class JLMathLayoutShortCut: NSObject {
 }
 
 public extension UIView {
-    var mlALl: JLMathLayoutShortCut {
+    var mlAll: JLMathLayoutShortCut {
         let shortCut = JLMathLayoutShortCut(view: self, corner: .ALL, constant: 0)
         return shortCut
     }

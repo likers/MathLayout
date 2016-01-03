@@ -9,12 +9,12 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    let topView = UIView()
+    let botView = UIView()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let topView = UIView()
-        let botView = UIView()
+        
         
         topView.backgroundColor = UIColor.blueColor()
         topView.translatesAutoresizingMaskIntoConstraints = false
@@ -27,12 +27,17 @@ class ViewController: UIViewController {
 //        topView.mlTop == self.view.mlTop + 50
 //        topView.mlBottom == self.view.mlBottom - 50
 //        topView.mlLeading == self.view.mlLeading + 50
-//        topView.mlALl == self.view.mlALl
+//        topView.mlAll == self.view.mlAll
 //        topView.mlTop == self.view.mlTop
 //        topView.mlLeading == self.view.mlLeading
-        topView.mlTopLeft == self.view.mlTopLeft + 50
-        topView.mlWidth >= 100
-        topView.mlHeight >= 100
+//        topView.mlTopLeft == self.view.mlTopLeft + 50
+//        topView.mlWidth >= 100
+//        topView.mlHeight >= 100
+        
+        topView.topAnchor == self.view.topAnchor + 50
+        topView.leftAnchor == self.view.leftAnchor + 50
+        topView.widthAnchor >= 100
+        topView.heightAnchor >= 100
         
 //        botView.mlTop == topView.mlBottom + 50
 //        botView.mlLeft == self.view.mlLeft + 50
