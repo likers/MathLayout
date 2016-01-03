@@ -25,6 +25,7 @@ class ViewController: UIViewController {
         self.view.addSubview(botView)
         
         topView.mlTop == self.view.mlTop + 50
+//        topView.mlBottom == self.view.mlBottom - 50
         topView.mlLeading == self.view.mlLeading + 50
         topView.mlWidth == 100
         topView.mlHeight == 100

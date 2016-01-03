@@ -75,10 +75,49 @@ public func == (left: NSLayoutAnchor, right:JLMathLayoutAnchor) {
 
 
 /* These methods return an active constraint of the form
+    thisAnchor >= otherAnchor + constant
+    or
+    thisDimension >= otherDimension * multiplier + constant.
+
+    thisAnchor <= otherAnchor + constant
+    or
+    thisDimension <= otherDimension * multiplier + constant.
+*/
+public func >= (left: NSLayoutAnchor, right:JLMathLayoutAnchor) {
+    if (!right.anchor.isKindOfClass(NSLayoutDimension) && !left.isKindOfClass(NSLayoutDimension)) {
+        left.constraintGreaterThanOrEqualToAnchor(right.anchor, constant: right.constant).active = true
+    } else if (left.isKindOfClass(NSLayoutDimension) && right.anchor.isKindOfClass(NSLayoutDimension)) {
+        (left as! NSLayoutDimension).constraintGreaterThanOrEqualToAnchor(right.anchor as! NSLayoutDimension, multiplier: right.multiplier, constant: right.constant).active = true
+    }
+}
+
+public func <= (left: NSLayoutAnchor, right:JLMathLayoutAnchor) {
+    if (!right.anchor.isKindOfClass(NSLayoutDimension) && !left.isKindOfClass(NSLayoutDimension)) {
+        left.constraintLessThanOrEqualToAnchor(right.anchor, constant: right.constant).active = true
+    } else if (left.isKindOfClass(NSLayoutDimension) && right.anchor.isKindOfClass(NSLayoutDimension)) {
+        (left as! NSLayoutDimension).constraintLessThanOrEqualToAnchor(right.anchor as! NSLayoutDimension, multiplier: right.multiplier, constant: right.constant).active = true
+    }
+}
+
+
+/* These methods return an active constraint of the form
     thisDimension = constant.
 */
 public func == (left: NSLayoutDimension, right:CGFloat) {
     left.constraintEqualToConstant(right).active = true
+}
+
+
+/* These methods return an active constraint of the form
+    thisDimension >= constant
+    thisDimension <= constant
+*/
+public func >= (left: NSLayoutDimension, right:CGFloat) {
+    left.constraintGreaterThanOrEqualToConstant(right).active = true
+}
+
+public func <= (left: NSLayoutDimension, right:CGFloat) {
+    left.constraintLessThanOrEqualToConstant(right).active = true
 }
 
 
