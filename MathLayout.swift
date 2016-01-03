@@ -15,6 +15,7 @@ public enum JLMathLayoutCorners : Int {
     case BottomRight
     case LeftBottom
     case TopRight
+    case Center
 }
 
 public class JLMathLayoutAnchor: NSObject {
@@ -66,6 +67,11 @@ public extension UIView {
         return shortCut
     }
     
+    var mlCenter: JLMathLayoutShortCut {
+        let shortCut = JLMathLayoutShortCut(view: self, corner: .Center, constant: 0)
+        return shortCut
+    }
+    
     var mlTop: NSLayoutYAxisAnchor {
         return self.topAnchor
     }
@@ -88,6 +94,14 @@ public extension UIView {
     
     var mlTrailing: NSLayoutXAxisAnchor {
         return self.trailingAnchor
+    }
+    
+    var mlCenterX: NSLayoutXAxisAnchor {
+        return self.centerXAnchor
+    }
+    
+    var mlCenterY: NSLayoutYAxisAnchor {
+        return self.centerYAnchor
     }
     
     var mlWidth: NSLayoutDimension {
@@ -130,6 +144,9 @@ public func == (left: JLMathLayoutShortCut, right: JLMathLayoutShortCut) {
     case .TopRight:
         left.view.topAnchor.constraintEqualToAnchor(right.view.topAnchor, constant: right.constant).active = true
         left.view.rightAnchor.constraintEqualToAnchor(right.view.rightAnchor, constant: right.constant*(-1)).active = true
+    case .Center:
+        left.view.centerXAnchor.constraintEqualToAnchor(right.view.centerXAnchor, constant: right.constant).active = true
+        left.view.centerYAnchor.constraintEqualToAnchor(right.view.centerYAnchor, constant: right.constant).active = true
     default:
         left.view.topAnchor.constraintEqualToAnchor(right.view.topAnchor, constant: right.constant).active = true
         left.view.leftAnchor.constraintEqualToAnchor(right.view.leftAnchor, constant: right.constant).active = true
