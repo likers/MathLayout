@@ -9,6 +9,14 @@
 import Foundation
 import UIKit
 
+public enum JLMathLayoutCorners : Int {
+    case ALL
+    case TopLeft
+    case BottomRight
+    case LeftBottom
+    case TopRight
+}
+
 public class JLMathLayoutAnchor: NSObject {
     private let anchor: NSLayoutAnchor
     private var constant: CGFloat
@@ -21,10 +29,41 @@ public class JLMathLayoutAnchor: NSObject {
     }
 }
 
+public class JLMathLayoutShortCut: NSObject {
+    private let view: UIView
+    private let corner: JLMathLayoutCorners
+    private var constant: CGFloat
+    init(view: UIView, corner: JLMathLayoutCorners, constant: CGFloat) {
+        self.view = view
+        self.corner = corner
+        self.constant = constant
+    }
+}
 
 public extension UIView {
-    var mlALl: [NSLayoutAnchor] {
-        return [self.topAnchor, self.leftAnchor, self.bottomAnchor, self.rightAnchor]
+    var mlALl: JLMathLayoutShortCut {
+        let shortCut = JLMathLayoutShortCut(view: self, corner: .ALL, constant: 0)
+        return shortCut
+    }
+    
+    var mlTopLeft: JLMathLayoutShortCut {
+        let shortCut = JLMathLayoutShortCut(view: self, corner: .TopLeft, constant: 0)
+        return shortCut
+    }
+    
+    var mlBottomRight: JLMathLayoutShortCut {
+        let shortCut = JLMathLayoutShortCut(view: self, corner: .BottomRight, constant: 0)
+        return shortCut
+    }
+    
+    var mlLeftBottom: JLMathLayoutShortCut {
+        let shortCut = JLMathLayoutShortCut(view: self, corner: .LeftBottom, constant: 0)
+        return shortCut
+    }
+    
+    var mlTopRight: JLMathLayoutShortCut {
+        let shortCut = JLMathLayoutShortCut(view: self, corner: .TopRight, constant: 0)
+        return shortCut
     }
     
     var mlTop: NSLayoutYAxisAnchor {
@@ -71,6 +110,51 @@ public func == (left: NSLayoutAnchor, right:JLMathLayoutAnchor) {
     } else if (left.isKindOfClass(NSLayoutDimension) && right.anchor.isKindOfClass(NSLayoutDimension)) {
         (left as! NSLayoutDimension).constraintEqualToAnchor(right.anchor as! NSLayoutDimension, multiplier: right.multiplier, constant: right.constant).active = true
     }
+}
+
+
+/* These methods return an active constraint of the form
+    thisAnchorGroup = otherAnchorGroup + constant(can be 0).
+*/
+public func == (left: JLMathLayoutShortCut, right: JLMathLayoutShortCut) {
+    switch left.corner {
+    case .TopLeft:
+        left.view.topAnchor.constraintEqualToAnchor(right.view.topAnchor, constant: right.constant).active = true
+        left.view.leftAnchor.constraintEqualToAnchor(right.view.leftAnchor, constant: right.constant).active = true
+    case .BottomRight:
+        left.view.bottomAnchor.constraintEqualToAnchor(right.view.bottomAnchor, constant: right.constant).active = true
+        left.view.rightAnchor.constraintEqualToAnchor(right.view.rightAnchor, constant: right.constant).active = true
+    case .LeftBottom:
+        left.view.leftAnchor.constraintEqualToAnchor(right.view.leftAnchor, constant: right.constant).active = true
+        left.view.bottomAnchor.constraintEqualToAnchor(right.view.bottomAnchor, constant: right.constant*(-1)).active = true
+    case .TopRight:
+        left.view.topAnchor.constraintEqualToAnchor(right.view.topAnchor, constant: right.constant).active = true
+        left.view.rightAnchor.constraintEqualToAnchor(right.view.rightAnchor, constant: right.constant*(-1)).active = true
+    default:
+        left.view.topAnchor.constraintEqualToAnchor(right.view.topAnchor, constant: right.constant).active = true
+        left.view.leftAnchor.constraintEqualToAnchor(right.view.leftAnchor, constant: right.constant).active = true
+        left.view.bottomAnchor.constraintEqualToAnchor(right.view.bottomAnchor, constant: right.constant*(-1)).active = true
+        left.view.rightAnchor.constraintEqualToAnchor(right.view.rightAnchor, constant: right.constant*(-1)).active = true
+    }
+}
+
+
+/* These methods return an active constraint of the form
+    thisAnchor = otherAnchor.
+*/
+public func == (left: NSLayoutAnchor, right: NSLayoutAnchor) {
+    if !left.isKindOfClass(NSLayoutDimension) && !right.isKindOfClass(NSLayoutDimension) {
+        left.constraintEqualToAnchor(right).active = true
+    }
+}
+
+public func == (left: [NSLayoutAnchor], right: [NSLayoutAnchor]) {
+    for var i = 0; i < right.count; i++ {
+        if !left[i].isKindOfClass(NSLayoutDimension) && !right[i].isKindOfClass(NSLayoutDimension) {
+            left[i].constraintEqualToAnchor(right[i]).active = true
+        }
+    }
+    
 }
 
 
@@ -135,6 +219,20 @@ public func + (left:CGFloat, right: NSLayoutAnchor) -> JLMathLayoutAnchor {
 }
 
 
+/* These methods return a JLMathLayoutShortCut object of the form
+    anchorGroup + constant.
+*/
+public func + (left:JLMathLayoutShortCut, right:CGFloat) -> JLMathLayoutShortCut {
+    left.constant = right
+    return left
+}
+
+public func + (left:CGFloat, right:JLMathLayoutShortCut) -> JLMathLayoutShortCut {
+    right.constant = left
+    return right
+}
+
+
 /* These methods return a JLMathLayoutAnchor object of the form
     multiplier * Dimension + constant.
 */
@@ -160,6 +258,20 @@ public func - (left:NSLayoutAnchor, right: CGFloat) -> JLMathLayoutAnchor {
 public func - (left:CGFloat, right: NSLayoutAnchor) -> JLMathLayoutAnchor {
     let layoutItem = JLMathLayoutAnchor(anchor: right, constant: left*(-1))
     return layoutItem
+}
+
+
+/* These methods return a JLMathLayoutShortCut object of the form
+    anchorGroup - constant.
+*/
+public func - (left:JLMathLayoutShortCut, right:CGFloat) -> JLMathLayoutShortCut {
+    left.constant = right*(-1)
+    return left
+}
+
+public func - (left:CGFloat, right:JLMathLayoutShortCut) -> JLMathLayoutShortCut {
+    right.constant = left*(-1)
+    return right
 }
 
 

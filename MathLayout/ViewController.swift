@@ -24,14 +24,19 @@ class ViewController: UIViewController {
         botView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(botView)
         
-        topView.mlTop == self.view.mlTop + 50
+//        topView.mlTop == self.view.mlTop + 50
 //        topView.mlBottom == self.view.mlBottom - 50
-        topView.mlLeading == self.view.mlLeading + 50
-        topView.mlWidth == 100
-        topView.mlHeight == 100
+//        topView.mlLeading == self.view.mlLeading + 50
+//        topView.mlALl == self.view.mlALl
+//        topView.mlTop == self.view.mlTop
+//        topView.mlLeading == self.view.mlLeading
+        topView.mlTopLeft == self.view.mlTopLeft + 50
+        topView.mlWidth >= 100
+        topView.mlHeight >= 100
         
-        botView.mlTop == topView.mlBottom + 50
-        botView.mlLeft == self.view.mlLeft + 50
+//        botView.mlTop == topView.mlBottom + 50
+//        botView.mlLeft == self.view.mlLeft + 50
+        botView.mlBottomRight == self.view.mlBottomRight - 50
         botView.mlWidth == 2*topView.mlWidth + 50
         botView.mlHeight == topView.mlHeight - 50
     }
