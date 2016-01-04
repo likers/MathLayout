@@ -1,5 +1,6 @@
 # MathLayout
 Make Swift Auto Layout in a most straightforward way. Just like you are doing linear equations.
+
 ```
 import UIKit
 
@@ -41,6 +42,7 @@ MathLayout is designed to get rid of all the complex syntax of programmatically 
 [Visual Format Language](https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/AutolayoutPG/VisualFormatLanguage.html#//apple_ref/doc/uid/TP40010853-CH27-SW1)).
 
 Let's say we want to layout a view that is constrained to it's superview's edges with 50pts of padding.
+
 ```
 let topView = UIView()
   
@@ -52,12 +54,23 @@ topView.leftAnchor == self.view.leftAnchor + 50
 topView.bottomAnchor == self.view.bottomAnchor - 50
 topView.rightAnchor == self.view.rightAnchor - 50
 ```
+
 or even shorter with MathLayoutShortCut:
+
 ```
 let topView = UIView()
-  
+	
 topView.translatesAutoresizingMaskIntoConstraints = false
 self.view.addSubview(topView)
-
+	
 topView.mlAll == self.view.mlAll + 50
 ```
+
+##We have more shortcuts
+- **mlAll**: All four edges, top, left, botom and right
+- **mlTopLeft**, **mlLeftBottom**, **mlBottomRight**, **mlTopRight**: Four corners of a retangular, respectively
+- **mlCenter**: Horizontal and vertical center
+
+##Notes
+- MathLayout is a syntax sugar based on operator overloading, if you don't like it then [SnapKit](https://github.com/SnapKit/SnapKit) is a better choice.
+- Please remember to set `view.translatesAutoresizingMaskIntoConstraints = false` before adding constraints.
