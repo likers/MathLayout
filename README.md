@@ -66,6 +66,26 @@ self.view.addSubview(topView)
 topView.mlAll == self.view.mlAll + 50
 ```
 
+###Using multiplier
+
+```
+topView.widthAnchor == 0.5*self.view.widthAnchor + 50
+topView.heightAnchor == 100
+```
+
+###Center Alignment
+
+```
+topView.centerXAnchor == self.view.centerXAnchor + 50
+topView.centerYAnchor == self.view.centerYAnchor
+```
+
+or center X and Y axis, with/without offset
+
+```
+topView.mlCenter == self.view.mlCenter + 50
+```
+
 ##We have more shortcuts
 - **mlAll**: All four edges, top, left, botom and right
 - **mlTopLeft**, **mlLeftBottom**, **mlBottomRight**, **mlTopRight**: Four corners of a retangular, respectively
