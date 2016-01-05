@@ -58,11 +58,6 @@ topView.rightAnchor == self.view.rightAnchor - 50
 or even shorter with MathLayoutShortCut:
 
 ```
-let topView = UIView()
-	
-topView.translatesAutoresizingMaskIntoConstraints = false
-self.view.addSubview(topView)
-	
 topView.mlAll == self.view.mlAll + 50
 ```
 
