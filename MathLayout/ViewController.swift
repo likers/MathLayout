@@ -43,9 +43,9 @@ class ViewController: UIViewController {
 //        botView.mlLeft == self.view.mlLeft + 50
 //        botView.mlBottomRight == self.view.mlBottomRight - 50
 //        botView.centerXAnchor == self.view.centerXAnchor + 50
-        botView.mlCenter == self.view.mlCenter - 50
-        botView.mlWidth == 2*topView.mlWidth + 50
-        botView.mlHeight == topView.mlHeight - 50
+        botView.center == self.view.center - 50
+        botView.width == 2*topView.width + 50
+        botView.height == topView.height - 50
     }
 
     override func didReceiveMemoryWarning() {

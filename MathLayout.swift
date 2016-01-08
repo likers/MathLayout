@@ -42,75 +42,76 @@ public class JLMathLayoutShortCut: NSObject {
 }
 
 public extension UIView {
-    var mlAll: JLMathLayoutShortCut {
+    var all: JLMathLayoutShortCut {
         let shortCut = JLMathLayoutShortCut(view: self, corner: .ALL, constant: 0)
         return shortCut
     }
     
-    var mlTopLeft: JLMathLayoutShortCut {
+    var topLeft: JLMathLayoutShortCut {
         let shortCut = JLMathLayoutShortCut(view: self, corner: .TopLeft, constant: 0)
         return shortCut
     }
     
-    var mlBottomRight: JLMathLayoutShortCut {
+    var bottomRight: JLMathLayoutShortCut {
         let shortCut = JLMathLayoutShortCut(view: self, corner: .BottomRight, constant: 0)
         return shortCut
     }
     
-    var mlLeftBottom: JLMathLayoutShortCut {
+    var leftBottom: JLMathLayoutShortCut {
         let shortCut = JLMathLayoutShortCut(view: self, corner: .LeftBottom, constant: 0)
         return shortCut
     }
     
-    var mlTopRight: JLMathLayoutShortCut {
+    var topRight: JLMathLayoutShortCut {
         let shortCut = JLMathLayoutShortCut(view: self, corner: .TopRight, constant: 0)
         return shortCut
     }
     
-    var mlCenter: JLMathLayoutShortCut {
+    var center: JLMathLayoutShortCut {
         let shortCut = JLMathLayoutShortCut(view: self, corner: .Center, constant: 0)
         return shortCut
     }
     
-    var mlTop: NSLayoutYAxisAnchor {
+    var top: NSLayoutYAxisAnchor {
         return self.topAnchor
     }
     
-    var mlBottom: NSLayoutYAxisAnchor {
+    var bottom: NSLayoutYAxisAnchor {
         return self.bottomAnchor
     }
     
-    var mlLeft: NSLayoutXAxisAnchor {
+    var left: NSLayoutXAxisAnchor {
         return self.leftAnchor
     }
     
-    var mlRight: NSLayoutXAxisAnchor {
+    var right: NSLayoutXAxisAnchor {
         return self.rightAnchor
     }
     
-    var mlLeading: NSLayoutXAxisAnchor {
+    var leading: NSLayoutXAxisAnchor {
         return self.leadingAnchor
     }
     
-    var mlTrailing: NSLayoutXAxisAnchor {
+    var trailing: NSLayoutXAxisAnchor {
         return self.trailingAnchor
     }
     
-    var mlCenterX: NSLayoutXAxisAnchor {
+    var centerX: NSLayoutXAxisAnchor {
         return self.centerXAnchor
     }
     
-    var mlCenterY: NSLayoutYAxisAnchor {
+    var centerY: NSLayoutYAxisAnchor {
         return self.centerYAnchor
     }
     
-    var mlWidth: NSLayoutDimension {
+    var width: NSLayoutDimension {
         return self.widthAnchor
     }
     
-    var mlHeight: NSLayoutDimension {
+    var height: NSLayoutDimension {
         return self.heightAnchor
     }
+    
 }
 
 /* These methods return an active constraint of the form 
