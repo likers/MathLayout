@@ -29,8 +29,8 @@ class ViewController: UIViewController {
 
 > - MathLayout is based on iOS 9.0's new [NSLayoutAnchor](https://developer.apple.com/library/mac/documentation/AppKit/Reference/NSLayoutAnchor_ClassReference/) 
 class, which requires iOS 9.0+. 
-- We recommend to use Apple's native properties like `leftAnchor`,`widthAnchor`, we also offer you the shorter version: `mlLeft`,
-`mlWidth`.
+- We recommend to use Apple's native properties like `leftAnchor`,`widthAnchor`, we also offer you the shorter version: `left`,
+`width`.
 
 ##Installing
 Just add `MathLayout.swift` into your project and start having fun.
@@ -55,36 +55,46 @@ topView.bottomAnchor == self.view.bottomAnchor - 50
 topView.rightAnchor == self.view.rightAnchor - 50
 ```
 
+or:
+
+```
+topView.top == self.view.top + 50
+topView.left == self.view.left + 50
+topView.bottom == self.view.bottom - 50
+topView.right == self.view.right - 50
+```
+
+
 or even shorter with MathLayoutShortCut:
 
 ```
-topView.mlAll == self.view.mlAll + 50
+topView.all == self.view.all + 50
 ```
 
 ###Using multiplier
 
 ```
-topView.widthAnchor == 0.5*self.view.widthAnchor + 50
-topView.heightAnchor == 100
+topView.width == 0.5*self.view.width + 50
+topView.height == 100
 ```
 
 ###Center Alignment
 
 ```
-topView.centerXAnchor == self.view.centerXAnchor + 50
-topView.centerYAnchor == self.view.centerYAnchor
+topView.centerX == self.view.centerX + 50
+topView.centerY == self.view.centerY
 ```
 
 or center X and Y axis, with/without offset
 
 ```
-topView.mlCenter == self.view.mlCenter + 50
+topView.centerXY == self.view.centerXY + 50
 ```
 
 ##We have more shortcuts
-- **mlAll**: All four edges, top, left, botom and right
-- **mlTopLeft**, **mlLeftBottom**, **mlBottomRight**, **mlTopRight**: Four corners of a retangular, respectively
-- **mlCenter**: Horizontal and vertical center
+- **all**: All four edges, top, left, botom and right
+- **topLeft**, **leftBottom**, **bottomRight**, **topRight**: Four corners of a retangular, respectively
+- **centerXY**: Horizontal and vertical center
 
 ##Notes
 - MathLayout is a syntax sugar based on operator overloading, if you don't like it then [SnapKit](https://github.com/SnapKit/SnapKit) is a better choice.
