@@ -67,7 +67,7 @@ public extension UIView {
         return shortCut
     }
     
-    var center: JLMathLayoutShortCut {
+    var centerXY: JLMathLayoutShortCut {
         let shortCut = JLMathLayoutShortCut(view: self, corner: .Center, constant: 0)
         return shortCut
     }
