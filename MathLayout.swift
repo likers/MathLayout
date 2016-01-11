@@ -41,6 +41,12 @@ public class JLMathLayoutShortCut: NSObject {
     }
 }
 
+infix operator ==== {
+    associativity none
+    precedence 91
+}
+
+
 public extension UIView {
     var all: JLMathLayoutShortCut {
         let shortCut = JLMathLayoutShortCut(view: self, corner: .ALL, constant: 0)
@@ -119,7 +125,7 @@ public extension UIView {
     or
     thisDimension = otherDimension * multiplier + constant.
 */
-public func == (left: NSLayoutAnchor, right:JLMathLayoutAnchor) {
+public func ==== (left: NSLayoutAnchor, right:JLMathLayoutAnchor) {
     if (!right.anchor.isKindOfClass(NSLayoutDimension) && !left.isKindOfClass(NSLayoutDimension)) {
         left.constraintEqualToAnchor(right.anchor, constant: right.constant).active = true
     } else if (left.isKindOfClass(NSLayoutDimension) && right.anchor.isKindOfClass(NSLayoutDimension)) {
@@ -131,7 +137,7 @@ public func == (left: NSLayoutAnchor, right:JLMathLayoutAnchor) {
 /* These methods return an active constraint of the form
     thisAnchorGroup = otherAnchorGroup + constant(can be 0).
 */
-public func == (left: JLMathLayoutShortCut, right: JLMathLayoutShortCut) {
+public func ==== (left: JLMathLayoutShortCut, right: JLMathLayoutShortCut) {
     switch left.corner {
     case .TopLeft:
         left.view.topAnchor.constraintEqualToAnchor(right.view.topAnchor, constant: right.constant).active = true
@@ -160,13 +166,13 @@ public func == (left: JLMathLayoutShortCut, right: JLMathLayoutShortCut) {
 /* These methods return an active constraint of the form
     thisAnchor = otherAnchor.
 */
-public func == (left: NSLayoutAnchor, right: NSLayoutAnchor) {
+public func ==== (left: NSLayoutAnchor, right: NSLayoutAnchor) {
     if !left.isKindOfClass(NSLayoutDimension) && !right.isKindOfClass(NSLayoutDimension) {
         left.constraintEqualToAnchor(right).active = true
     }
 }
 
-public func == (left: [NSLayoutAnchor], right: [NSLayoutAnchor]) {
+public func ==== (left: [NSLayoutAnchor], right: [NSLayoutAnchor]) {
     for var i = 0; i < right.count; i++ {
         if !left[i].isKindOfClass(NSLayoutDimension) && !right[i].isKindOfClass(NSLayoutDimension) {
             left[i].constraintEqualToAnchor(right[i]).active = true
@@ -205,7 +211,7 @@ public func <= (left: NSLayoutAnchor, right:JLMathLayoutAnchor) {
 /* These methods return an active constraint of the form
     thisDimension = constant.
 */
-public func == (left: NSLayoutDimension, right:CGFloat) {
+public func ==== (left: NSLayoutDimension, right:CGFloat) {
     left.constraintEqualToConstant(right).active = true
 }
 
