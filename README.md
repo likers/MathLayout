@@ -14,12 +14,11 @@ class ViewController: UIViewController {
         topView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(topView)
         
-        topView.topAnchor == self.view.topAnchor + 50
-        topView.leftAnchor == self.view.leftAnchor + 50
-        topView.widthAnchor == 100
-        topView.heightAnchor == 100
+        topView.top ==== self.view.top + 50
+        topView.left ==== self.view.left + 50
+        topView.width ==== 100
+        topView.height ==== 100
     }
-  
 }
 ```
 ##Requirements
@@ -49,46 +48,46 @@ let topView = UIView()
 topView.translatesAutoresizingMaskIntoConstraints = false
 self.view.addSubview(topView)
 
-topView.topAnchor == self.view.topAnchor + 50
-topView.leftAnchor == self.view.leftAnchor + 50
-topView.bottomAnchor == self.view.bottomAnchor - 50
-topView.rightAnchor == self.view.rightAnchor - 50
+topView.topAnchor ==== self.view.topAnchor + 50
+topView.leftAnchor ==== self.view.leftAnchor + 50
+topView.bottomAnchor ==== self.view.bottomAnchor - 50
+topView.rightAnchor ==== self.view.rightAnchor - 50
 ```
 
 or:
 
 ```
-topView.top == self.view.top + 50
-topView.left == self.view.left + 50
-topView.bottom == self.view.bottom - 50
-topView.right == self.view.right - 50
+topView.top ==== self.view.top + 50
+topView.left ==== self.view.left + 50
+topView.bottom ==== self.view.bottom - 50
+topView.right ==== self.view.right - 50
 ```
 
 
 or even shorter with MathLayoutShortCut:
 
 ```
-topView.all == self.view.all + 50
+topView.all ==== self.view.all + 50
 ```
 
 ###Using multiplier
 
 ```
-topView.width == 0.5*self.view.width + 50
-topView.height == 100
+topView.width ==== 0.5*self.view.width + 50
+topView.height ==== 100
 ```
 
 ###Center Alignment
 
 ```
-topView.centerX == self.view.centerX + 50
-topView.centerY == self.view.centerY
+topView.centerX ==== self.view.centerX + 50
+topView.centerY ==== self.view.centerY
 ```
 
 or center X and Y axis, with/without offset
 
 ```
-topView.centerXY == self.view.centerXY + 50
+topView.centerXY ==== self.view.centerXY + 50
 ```
 
 ##We have more shortcuts
@@ -97,5 +96,9 @@ topView.centerXY == self.view.centerXY + 50
 - **centerXY**: Horizontal and vertical center
 
 ##Notes
-- MathLayout is a syntax sugar based on operator overloading, if you don't like it then [SnapKit](https://github.com/SnapKit/SnapKit) is a better choice.
 - Please remember to set `view.translatesAutoresizingMaskIntoConstraints = false` before adding constraints.
+
+- MathLayout is a syntax sugar based on operator overloading, if you don't like it then [SnapKit](https://github.com/SnapKit/SnapKit) is a better choice.
+
+- I use the weird "====" to do the same thing as "=", or "equal to", while you don't need to worry about conflicts. What's more the longest operator in iOS history will let you find your autolayout codes much easier :)
+
