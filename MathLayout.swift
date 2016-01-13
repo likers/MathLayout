@@ -49,72 +49,88 @@ infix operator ==== {
 
 public extension UIView {
     var all: JLMathLayoutShortCut {
+        self.translatesAutoresizingMaskIntoConstraints = false
         let shortCut = JLMathLayoutShortCut(view: self, corner: .ALL, constant: 0)
         return shortCut
     }
     
     var topLeft: JLMathLayoutShortCut {
+        self.translatesAutoresizingMaskIntoConstraints = false
         let shortCut = JLMathLayoutShortCut(view: self, corner: .TopLeft, constant: 0)
         return shortCut
     }
     
     var bottomRight: JLMathLayoutShortCut {
+        self.translatesAutoresizingMaskIntoConstraints = false
         let shortCut = JLMathLayoutShortCut(view: self, corner: .BottomRight, constant: 0)
         return shortCut
     }
     
     var leftBottom: JLMathLayoutShortCut {
+        self.translatesAutoresizingMaskIntoConstraints = false
         let shortCut = JLMathLayoutShortCut(view: self, corner: .LeftBottom, constant: 0)
         return shortCut
     }
     
     var topRight: JLMathLayoutShortCut {
+        self.translatesAutoresizingMaskIntoConstraints = false
         let shortCut = JLMathLayoutShortCut(view: self, corner: .TopRight, constant: 0)
         return shortCut
     }
     
     var centerXY: JLMathLayoutShortCut {
+        self.translatesAutoresizingMaskIntoConstraints = false
         let shortCut = JLMathLayoutShortCut(view: self, corner: .Center, constant: 0)
         return shortCut
     }
     
     var top: NSLayoutYAxisAnchor {
+        self.translatesAutoresizingMaskIntoConstraints = false
         return self.topAnchor
     }
     
     var bottom: NSLayoutYAxisAnchor {
+        self.translatesAutoresizingMaskIntoConstraints = false
         return self.bottomAnchor
     }
     
     var left: NSLayoutXAxisAnchor {
+        self.translatesAutoresizingMaskIntoConstraints = false
         return self.leftAnchor
     }
     
     var right: NSLayoutXAxisAnchor {
+        self.translatesAutoresizingMaskIntoConstraints = false
         return self.rightAnchor
     }
     
     var leading: NSLayoutXAxisAnchor {
+        self.translatesAutoresizingMaskIntoConstraints = false
         return self.leadingAnchor
     }
     
     var trailing: NSLayoutXAxisAnchor {
+        self.translatesAutoresizingMaskIntoConstraints = false
         return self.trailingAnchor
     }
     
     var centerX: NSLayoutXAxisAnchor {
+        self.translatesAutoresizingMaskIntoConstraints = false
         return self.centerXAnchor
     }
     
     var centerY: NSLayoutYAxisAnchor {
+        self.translatesAutoresizingMaskIntoConstraints = false
         return self.centerYAnchor
     }
     
     var width: NSLayoutDimension {
+        self.translatesAutoresizingMaskIntoConstraints = false
         return self.widthAnchor
     }
     
     var height: NSLayoutDimension {
+        self.translatesAutoresizingMaskIntoConstraints = false
         return self.heightAnchor
     }
     

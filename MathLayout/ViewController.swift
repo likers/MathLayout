@@ -17,11 +17,11 @@ class ViewController: UIViewController {
         
         
         topView.backgroundColor = UIColor.blueColor()
-        topView.translatesAutoresizingMaskIntoConstraints = false
+//        topView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(topView)
         
         botView.backgroundColor = UIColor.greenColor()
-        botView.translatesAutoresizingMaskIntoConstraints = false
+//        botView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(botView)
         
         topView.topAnchor ==== self.view.topAnchor + 50
