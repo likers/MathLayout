@@ -1,5 +1,5 @@
 # MathLayout
-Make Swift Auto Layout in a most straightforward way. Just like you are doing linear equations.
+Make Swift Auto Layout in a most straightforward way. Just like you are doing simple linear equations and get rid of annoying syntaxes.
 
 ```
 import UIKit
@@ -11,7 +11,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        topView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(topView)
         
         topView.top ==== self.view.top + 50
@@ -28,8 +27,7 @@ class ViewController: UIViewController {
 
 > - MathLayout is based on iOS 9.0's new [NSLayoutAnchor](https://developer.apple.com/library/mac/documentation/AppKit/Reference/NSLayoutAnchor_ClassReference/) 
 class, which requires iOS 9.0+. 
-- We recommend to use Apple's native properties like `leftAnchor`,`widthAnchor`, we also offer you the shorter version: `left`,
-`width`.
+- We use like `left`, `right`, `top` annotations for shortcut. I know that will be conflict with some self defined position properties. You can easliy change them to whatever you prefer in MathLayout.swift file if you want to.
 
 ##Installing
 Just add `MathLayout.swift` into your project and start having fun.
@@ -45,7 +43,6 @@ Let's say we want to layout a view that is constrained to it's superview's edges
 ```
 let topView = UIView()
   
-topView.translatesAutoresizingMaskIntoConstraints = false
 self.view.addSubview(topView)
 
 topView.topAnchor ==== self.view.topAnchor + 50
@@ -96,7 +93,6 @@ topView.centerXY ==== self.view.centerXY + 50
 - **centerXY**: Horizontal and vertical center
 
 ##Notes
-- Please remember to set `view.translatesAutoresizingMaskIntoConstraints = false` before adding constraints.
 
 - MathLayout is a syntax sugar based on operator overloading, if you don't like it then [SnapKit](https://github.com/SnapKit/SnapKit) is a better choice.
 
